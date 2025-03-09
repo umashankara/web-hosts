@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Pages Website</title>
+    <title>My Website</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,57 +12,45 @@
             margin: 0;
             padding: 0;
         }
-        header {
-            background: #333;
-            color: white;
-            padding: 15px;
-            font-size: 24px;
-        }
-        nav {
-            background: #444;
-            padding: 10px;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 18px;
-        }
         .container {
-            max-width: 800px;
-            margin: 20px auto;
+            max-width: 600px;
+            margin: 50px auto;
             background: white;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        footer {
-            background: #333;
-            color: white;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+        h1 {
+            color: #333;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #007BFF;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        a:hover {
+            color: #0056b3;
         }
     </style>
 </head>
 <body>
 
-    <header>My GitHub Pages Website</header>
-
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-    </nav>
-
     <div class="container">
         <h1>Welcome to My Website</h1>
-        <p>This is a sample multi-page website hosted on GitHub Pages.</p>
-        <p>Click on the navigation links above to explore different pages.</p>
+        <p>Select a page:</p>
+        <ul>
+            <li><a href="about.html">About Page</a></li>
+            <li><a href="contact.html">Contact Page</a></li>
+        </ul>
     </div>
-
-    <footer>&copy; 2025 My Website | Hosted with GitHub Pages</footer>
 
 </body>
 </html>
