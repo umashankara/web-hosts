@@ -93,6 +93,11 @@ class MySQLDatabase implements Database {
         System.out.println("Connecting to MySQL...");
     }
 }
+class MongoDBDatabase implements Database {
+    public void connect() {
+        System.out.println("Connecting to MongoDB...");
+    }
+}
 class Application {
     private Database database;
     Application(Database database) {
@@ -100,6 +105,16 @@ class Application {
     }
     void start() {
         database.connect();
+    }
+}</code></pre>
+
+        <h3>✅ Java Records & Sealed Classes Reduce Need for Abstract Classes</h3>
+        <pre><code>record User(String name, int age) {} // Auto-generates constructor, getters
+
+public class Main {
+    public static void main(String[] args) {
+        User user = new User("Alice", 25);
+        System.out.println(user.name());
     }
 }</code></pre>
 
@@ -135,10 +150,17 @@ class Application {
                 <td>❌ Less Used</td>
                 <td>✅ Used in Java Collections, Spring</td>
             </tr>
+            <tr>
+                <td>Java Records & Sealed Classes</td>
+                <td>❌ Not Supported</td>
+                <td>✅ Supported (Java 14+)</td>
+            </tr>
         </table>
         
         <h2>Conclusion</h2>
-        <p>Modern Java favors <strong>interfaces</strong> over abstract classes because of their flexibility, multiple inheritance, and support for modern Java features like default methods and functional programming.</p>
+        <p>Modern Java favors <strong>interfaces</strong> over abstract classes because of their flexibility, multiple inheritance, and support for modern Java features like default methods, functional programming, and dependency injection.</p>
+        <p><strong>Best Practice:</strong> Use interfaces unless you need shared fields or partially implemented methods.</p>
+        <p>✅ **Interfaces = Flexibility + Scalability + Modern Java Best Practices.** 🚀</p>
     </div>
 </body>
 </html>
