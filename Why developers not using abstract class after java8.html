@@ -7,118 +7,137 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 20px;
+            line-height: 1.6;
             background-color: #f4f4f4;
-        }
-        h1, h2, h3 {
-            color: #333;
-        }
-        pre {
-            background: #333;
-            color: #fff;
-            padding: 10px;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
-        code {
-            font-family: "Courier New", monospace;
+            padding: 20px;
         }
         .container {
             max-width: 900px;
             margin: auto;
-            background: #fff;
+            background: white;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        code {
+            background: #eee;
+            padding: 5px;
+            display: block;
+            white-space: pre;
+            border-left: 5px solid #333;
+            margin: 10px 0;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Abstract Classes vs Interfaces in Java</h1>
-        
-        <h2>1. What is an Abstract Class?</h2>
-        <p>An abstract class is a blueprint for other classes. It cannot be instantiated and is meant to be extended by subclasses.</p>
-        <pre><code>abstract class Animal {
-    abstract void makeSound(); // Abstract method
-    void sleep() {
-        System.out.println("Sleeping...");
-    }
-}</code></pre>
+        <h2>Why Developers Prefer Interfaces Over Abstract Classes</h2>
 
-        <h2>2. Why Use Interfaces Instead of Abstract Classes?</h2>
-        <h3>✅ Multiple Inheritance Support</h3>
-        <pre><code>interface Animal {
-    void eat();
-}
-interface Canine {
-    void bark();
-}
-class Dog implements Animal, Canine {
-    public void eat() {
-        System.out.println("Dog is eating...");
-    }
-    public void bark() {
-        System.out.println("Dog is barking...");
-    }
-}</code></pre>
-
-        <h3>✅ Default & Static Methods in Interfaces (Java 8+)</h3>
-        <pre><code>interface Vehicle {
+        <h3>1️⃣ Java Now Supports Default Methods in Interfaces (Since Java 8)</h3>
+        <p>Before Java 8, interfaces could only have abstract methods. But Java 8 introduced <code>default</code> methods.</p>
+        <code>
+interface Vehicle {
     void start();
     default void stop() {
         System.out.println("Vehicle is stopping...");
     }
-}</code></pre>
+}
+class Car implements Vehicle {
+    @Override
+    public void start() {
+        System.out.println("Car is starting...");
+    }
+}
+        </code>
 
-        <h3>✅ Functional Interfaces & Lambda Expressions</h3>
-        <pre><code>@FunctionalInterface
+        <h3>2️⃣ Multiple Inheritance Support in Interfaces</h3>
+        <code>
+interface Engine {
+    void start();
+}
+interface Transmission {
+    void shiftGear();
+}
+class Car implements Engine, Transmission {
+    @Override
+    public void start() {
+        System.out.println("Car engine starting...");
+    }
+    @Override
+    public void shiftGear() {
+        System.out.println("Car shifting gears...");
+    }
+}
+        </code>
+
+        <h3>3️⃣ Better Scalability and Loose Coupling</h3>
+        <code>
+interface PaymentGateway {
+    void processPayment(double amount);
+}
+class PayPal implements PaymentGateway {
+    @Override
+    public void processPayment(double amount) {
+        System.out.println("Processing $" + amount + " via PayPal.");
+    }
+}
+        </code>
+
+        <h3>4️⃣ Abstract Classes Are Less Flexible</h3>
+        <code>
+abstract class Animal {
+    abstract void makeSound();
+}
+class Dog extends Animal {
+    @Override
+    void makeSound() {
+        System.out.println("Dog barks!");
+    }
+}
+        </code>
+
+        <h3>5️⃣ Functional Interfaces & Lambda Expressions (Since Java 8)</h3>
+        <code>
 interface Greeting {
-    void sayHello(String name);
+    void sayHello();
 }
 public class Main {
     public static void main(String[] args) {
-        Greeting greet = (name) -> System.out.println("Hello, " + name);
-        greet.sayHello("Alice");
+        Greeting greet = () -> System.out.println("Hello, World!");
+        greet.sayHello();
     }
-}</code></pre>
+}
+        </code>
 
-        <h3>✅ Dependency Injection with Interfaces</h3>
-        <pre><code>interface Database {
+        <h3>6️⃣ Interfaces Work Well with Dependency Injection</h3>
+        <code>
+interface Database {
     void connect();
 }
 class MySQLDatabase implements Database {
+    @Override
     public void connect() {
         System.out.println("Connecting to MySQL...");
     }
 }
-class MongoDBDatabase implements Database {
-    public void connect() {
-        System.out.println("Connecting to MongoDB...");
+        </code>
+
+        <h3>7️⃣ Abstract Classes Still Have Their Uses</h3>
+        <code>
+abstract class Vehicle {
+    int speed;
+    void showSpeed() {
+        System.out.println("Speed: " + speed + " km/h");
     }
+    abstract void start();
 }
-class Application {
-    private Database database;
-    Application(Database database) {
-        this.database = database;
-    }
-    void start() {
-        database.connect();
-    }
-}</code></pre>
+        </code>
 
-        <h3>✅ Java Records & Sealed Classes Reduce Need for Abstract Classes</h3>
-        <pre><code>record User(String name, int age) {} // Auto-generates constructor, getters
-
-public class Main {
-    public static void main(String[] args) {
-        User user = new User("Alice", 25);
-        System.out.println(user.name());
-    }
-}</code></pre>
-
-        <h2>3. Abstract Class vs Interface - Comparison</h2>
+        <h2>Final Comparison: Abstract Class vs Interface</h2>
         <table border="1" cellpadding="10" cellspacing="0">
             <tr>
                 <th>Feature</th>
@@ -126,41 +145,30 @@ public class Main {
                 <th>Interface</th>
             </tr>
             <tr>
+                <td>Methods</td>
+                <td>Can have both abstract and concrete methods</td>
+                <td>Can have abstract, default, and static methods</td>
+            </tr>
+            <tr>
+                <td>Instance Variables</td>
+                <td>Allowed</td>
+                <td>Not allowed (only constants)</td>
+            </tr>
+            <tr>
                 <td>Multiple Inheritance</td>
-                <td>❌ Not Supported</td>
-                <td>✅ Supported</td>
-            </tr>
-            <tr>
-                <td>Concrete Methods</td>
-                <td>✅ Yes</td>
-                <td>✅ Yes (Java 8+)</td>
-            </tr>
-            <tr>
-                <td>Functional Interfaces</td>
-                <td>❌ No</td>
-                <td>✅ Yes</td>
-            </tr>
-            <tr>
-                <td>Dependency Injection</td>
-                <td>❌ Difficult</td>
-                <td>✅ Easy</td>
-            </tr>
-            <tr>
-                <td>API Design</td>
-                <td>❌ Less Used</td>
-                <td>✅ Used in Java Collections, Spring</td>
-            </tr>
-            <tr>
-                <td>Java Records & Sealed Classes</td>
-                <td>❌ Not Supported</td>
-                <td>✅ Supported (Java 14+)</td>
+                <td>Not supported</td>
+                <td>Supported</td>
             </tr>
         </table>
-        
+
         <h2>Conclusion</h2>
-        <p>Modern Java favors <strong>interfaces</strong> over abstract classes because of their flexibility, multiple inheritance, and support for modern Java features like default methods, functional programming, and dependency injection.</p>
-        <p><strong>Best Practice:</strong> Use interfaces unless you need shared fields or partially implemented methods.</p>
-        <p>✅ **Interfaces = Flexibility + Scalability + Modern Java Best Practices.** 🚀</p>
+        <p>In modern Java, interfaces have largely replaced abstract classes because they provide:</p>
+        <ul>
+            <li>Greater flexibility</li>
+            <li>Multiple inheritance</li>
+            <li>Compatibility with newer Java features</li>
+        </ul>
+        <p>However, abstract classes are still useful when you need shared state (fields) and partially implemented behavior.</p>
     </div>
 </body>
 </html>
