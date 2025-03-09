@@ -3,69 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Java: Abstract Classes vs Interfaces</title>
+    <title>My GitHub Pages Website</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.6;
+            text-align: center;
             background-color: #f4f4f4;
-            padding: 20px;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #333;
+            color: white;
+            padding: 15px;
+            font-size: 24px;
+        }
+        nav {
+            background: #444;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
         }
         .container {
             max-width: 800px;
-            margin: 0 auto;
+            margin: 20px auto;
             background: white;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        h1, h2 {
-            color: #333;
-        }
-        pre {
-            background: #272822;
-            color: #fff;
+        footer {
+            background: #333;
+            color: white;
             padding: 10px;
-            overflow-x: auto;
-            border-radius: 5px;
-        }
-        code {
-            color: #f92672;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
+
+    <header>My GitHub Pages Website</header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
     <div class="container">
-        <h1>Java: Why Interfaces Are Preferred Over Abstract Classes</h1>
-        <p>In modern Java development, interfaces are often preferred due to multiple inheritance support, flexibility, and better design practices.</p>
-        
-        <h2>1️⃣ Multiple Inheritance in Interfaces</h2>
-        <p>Interfaces allow multiple inheritance, while abstract classes do not.</p>
-        <pre><code>interface Flyable { void fly(); }
-interface Swimmable { void swim(); }
-
-class Duck implements Flyable, Swimmable {
-    public void fly() { System.out.println("Duck flies!"); }
-    public void swim() { System.out.println("Duck swims!"); }
-}</code></pre>
-
-        <h2>2️⃣ Java 8+ Features: Default and Static Methods</h2>
-        <p>Interfaces can have default methods, reducing the need for abstract classes.</p>
-        <pre><code>interface Vehicle {
-    default void stop() { System.out.println("Stopping..."); }
-}</code></pre>
-
-        <h2>3️⃣ Better for API Design and Frameworks</h2>
-        <p>Interfaces are preferred in frameworks like Spring and Hibernate.</p>
-        
-        <h2>💡 Conclusion</h2>
-        <p>Abstract classes are useful but interfaces provide more flexibility. With Java 8+, interfaces can have default methods, making them even more powerful.</p>
-        
-        <h3>📌 Should You Use an Abstract Class or an Interface?</h3>
-        <ul>
-            <li>✅ Use <b>interfaces</b> for flexibility and multiple inheritance.</li>
-            <li>✅ Use <b>abstract classes</b> when you need shared code across related classes.</li>
-        </ul>
+        <h1>Welcome to My Website</h1>
+        <p>This is a sample multi-page website hosted on GitHub Pages.</p>
+        <p>Click on the navigation links above to explore different pages.</p>
     </div>
+
+    <footer>&copy; 2025 My Website | Hosted with GitHub Pages</footer>
+
 </body>
 </html>
