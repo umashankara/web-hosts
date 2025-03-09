@@ -4,40 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             text-align: center;
-            background-color: #f4f4f4;
+            background: linear-gradient(135deg, #667eea, #764ba2);
             margin: 0;
             padding: 0;
+            color: white;
         }
         .container {
-            max-width: 600px;
-            margin: 50px auto;
-            background: white;
+            max-width: 500px;
+            margin: 100px auto;
+            background: rgba(255, 255, 255, 0.2);
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
         }
         h1 {
-            color: #333;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 10px;
         }
-        ul {
-            list-style: none;
-            padding: 0;
+        p {
+            font-size: 16px;
+            font-weight: 300;
         }
-        li {
-            margin: 10px 0;
+        .link-box {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
         }
-        a {
+        .link-box a {
+            display: block;
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
             text-decoration: none;
-            color: #007BFF;
-            font-size: 20px;
-            font-weight: bold;
+            font-size: 18px;
+            font-weight: 600;
+            color: #764ba2;
+            transition: 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        a:hover {
-            color: #0056b3;
+        .link-box a:hover {
+            background: #764ba2;
+            color: white;
+            transform: scale(1.05);
+        }
+        footer {
+            margin-top: 40px;
+            font-size: 14px;
+            opacity: 0.7;
         }
     </style>
 </head>
@@ -45,11 +66,14 @@
 
     <div class="container">
         <h1>Welcome to My Website</h1>
-        <p>Select a page:</p>
-        <ul>
-            <li><a href="about.html">About Page</a></li>
-            <li><a href="contact.html">Contact Page</a></li>
-        </ul>
+        <p>Explore different pages using the links below:</p>
+
+        <div class="link-box">
+            <a href="about.html">📖 About Page</a>
+            <a href="contact.html">📩 Contact Page</a>
+        </div>
+
+        <footer>© 2025 My Website | Made with ❤️</footer>
     </div>
 
 </body>
