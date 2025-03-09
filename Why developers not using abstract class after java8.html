@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abstract Classes vs Interfaces in Java</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        pre {
+            background: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: "Courier New", monospace;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Abstract Classes vs Interfaces in Java</h1>
+        
+        <h2>1. What is an Abstract Class?</h2>
+        <p>An abstract class is a blueprint for other classes. It cannot be instantiated and is meant to be extended by subclasses.</p>
+        <pre><code>abstract class Animal {
+    abstract void makeSound(); // Abstract method
+    void sleep() {
+        System.out.println("Sleeping...");
+    }
+}</code></pre>
+
+        <h2>2. Why Use Interfaces Instead of Abstract Classes?</h2>
+        <h3>✅ Multiple Inheritance Support</h3>
+        <pre><code>interface Animal {
+    void eat();
+}
+interface Canine {
+    void bark();
+}
+class Dog implements Animal, Canine {
+    public void eat() {
+        System.out.println("Dog is eating...");
+    }
+    public void bark() {
+        System.out.println("Dog is barking...");
+    }
+}</code></pre>
+
+        <h3>✅ Default & Static Methods in Interfaces (Java 8+)</h3>
+        <pre><code>interface Vehicle {
+    void start();
+    default void stop() {
+        System.out.println("Vehicle is stopping...");
+    }
+}</code></pre>
+
+        <h3>✅ Functional Interfaces & Lambda Expressions</h3>
+        <pre><code>@FunctionalInterface
+interface Greeting {
+    void sayHello(String name);
+}
+public class Main {
+    public static void main(String[] args) {
+        Greeting greet = (name) -> System.out.println("Hello, " + name);
+        greet.sayHello("Alice");
+    }
+}</code></pre>
+
+        <h3>✅ Dependency Injection with Interfaces</h3>
+        <pre><code>interface Database {
+    void connect();
+}
+class MySQLDatabase implements Database {
+    public void connect() {
+        System.out.println("Connecting to MySQL...");
+    }
+}
+class Application {
+    private Database database;
+    Application(Database database) {
+        this.database = database;
+    }
+    void start() {
+        database.connect();
+    }
+}</code></pre>
+
+        <h2>3. Abstract Class vs Interface - Comparison</h2>
+        <table border="1" cellpadding="10" cellspacing="0">
+            <tr>
+                <th>Feature</th>
+                <th>Abstract Class</th>
+                <th>Interface</th>
+            </tr>
+            <tr>
+                <td>Multiple Inheritance</td>
+                <td>❌ Not Supported</td>
+                <td>✅ Supported</td>
+            </tr>
+            <tr>
+                <td>Concrete Methods</td>
+                <td>✅ Yes</td>
+                <td>✅ Yes (Java 8+)</td>
+            </tr>
+            <tr>
+                <td>Functional Interfaces</td>
+                <td>❌ No</td>
+                <td>✅ Yes</td>
+            </tr>
+            <tr>
+                <td>Dependency Injection</td>
+                <td>❌ Difficult</td>
+                <td>✅ Easy</td>
+            </tr>
+            <tr>
+                <td>API Design</td>
+                <td>❌ Less Used</td>
+                <td>✅ Used in Java Collections, Spring</td>
+            </tr>
+        </table>
+        
+        <h2>Conclusion</h2>
+        <p>Modern Java favors <strong>interfaces</strong> over abstract classes because of their flexibility, multiple inheritance, and support for modern Java features like default methods and functional programming.</p>
+    </div>
+</body>
+</html>
