@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Difference Between Private Class and Final Class in Java</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        pre {
+            background: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background: #555;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Difference Between Private Class and Final Class in Java</h1>
+    
+    <h2>1. Private Class</h2>
+    <p>A <strong>private</strong> class means the class is only accessible within the enclosing class.</p>
+    <ul>
+        <li>A <strong>top-level class cannot be private</strong> in Java.</li>
+        <li>Only <strong>inner classes</strong> can be private.</li>
+    </ul>
+    <h3>Example of a Private Inner Class:</h3>
+    <pre>
+class Outer {
+    private class Inner {
+        void display() {
+            System.out.println("Inside private Inner class");
+        }
+    }
+    
+    void createInner() {
+        Inner obj = new Inner();
+        obj.display();
+    }
+}
+    </pre>
+    
+    <h2>2. Final Class</h2>
+    <p>A <strong>final</strong> class cannot be inherited (extended) by any other class.</p>
+    <ul>
+        <li>Used to prevent subclassing.</li>
+        <li>Ensures class behavior remains unchanged.</li>
+    </ul>
+    <h3>Example of a Final Class:</h3>
+    <pre>
+final class FinalClass {
+    void show() {
+        System.out.println("Inside final class");
+    }
+}
+    </pre>
+    
+    <h2>Key Differences</h2>
+    <table>
+        <tr>
+            <th>Feature</th>
+            <th>Private Class</th>
+            <th>Final Class</th>
+        </tr>
+        <tr>
+            <td><strong>Definition</strong></td>
+            <td>A class that is accessible only within its enclosing class</td>
+            <td>A class that cannot be extended (inherited)</td>
+        </tr>
+        <tr>
+            <td><strong>Scope</strong></td>
+            <td>Only applies to inner (nested) classes</td>
+            <td>Applies to both inner and outer classes</td>
+        </tr>
+        <tr>
+            <td><strong>Inheritance</strong></td>
+            <td>Can be inherited if accessible</td>
+            <td>Cannot be inherited</td>
+        </tr>
+        <tr>
+            <td><strong>Use Case</strong></td>
+            <td>Restrict access within a specific class</td>
+            <td>Prevent modification by inheritance</td>
+        </tr>
+        <tr>
+            <td><strong>Allowed at Top-Level?</strong></td>
+            <td>&#10060; No</td>
+            <td>&#9989; Yes</td>
+        </tr>
+    </table>
+    
+    <h2>When to Use Which?</h2>
+    <ul>
+        <li><strong>Use private for inner classes</strong> when you want to encapsulate them and restrict access.</li>
+        <li><strong>Use final for classes</strong> that should not be extended, like utility classes (<code>java.lang.String</code>, <code>java.lang.Math</code>).</li>
+    </ul>
+</body>
+</html>
